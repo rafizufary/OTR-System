@@ -71,10 +71,47 @@
           </li> --}}
           @endif
           @if(auth()->user()->role === 'admin')
+          <li class="nav-section">
+            <span class="sidebar-mini-icon">
+              <i class="fa fa-ellipsis-h"></i>
+            </span>
+            <h4 class="text-section">Admin</h4>
+          </li>
+          <li class="nav-item {{ Route::is('status') ? 'active' : '' }}">
+            <a href="{{ route('status') }}">
+              <i class="fas fa-plane"></i>
+              <p>User Management</p>
+            </a>
+          </li>
           <li class="nav-item {{ Route::is('status') ? 'active' : '' }}">
             <a href="{{ route('status') }}">
               <i class="fas fa-clock"></i>
               <p>Status</p>
+            </a>
+          </li>
+
+          <li class="nav-section">
+            <span class="sidebar-mini-icon">
+              <i class="fa fa-ellipsis-h"></i>
+            </span>
+            <h4 class="text-section">Menu</h4>
+          </li>
+          <li class="nav-item {{ Route::is('form') ? 'active' : '' }}">
+            <a href="{{ route('form') }}">
+              <i class="fas fa-pen"></i>
+              <p>Engineer Form</p>
+            </a>
+          </li>
+          <li class="nav-item {{ Route::is('coordinator') ? 'active' : '' }}">
+            <a href="{{ route('coordinator') }}">
+              <i class="fas fa-layer-group"></i>
+              <p>Coordinator Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item {{ Route::is('inspector') ? 'active' : '' }}">
+            <a href="{{ route('inspector') }}">
+              <i class="fas fa-home"></i>
+              <p>Inspector Dashboard</p>
             </a>
           </li>
           @endif

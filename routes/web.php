@@ -27,14 +27,14 @@ Route::middleware(['roles:admin,coordinator,inspector,engineer'])->group(functio
 });
 
  // Routes untuk Engineer
-Route::middleware(['roles:engineer'])->group(function () {
+Route::middleware(['roles:engineer,admin'])->group(function () {
     Route::get('/form', [FormController::class, 'form'])->name('form');
     Route::post('/form', [FormController::class, 'store'])->name('form.store');
     Route::get('/engineer', [EngineerController::class, 'engineer'])->name('engineer');
 
 });
 
-Route::middleware(['roles:coordinator'])->group(function () {
+Route::middleware(['roles:coordinator,admin'])->group(function () {
     Route::get('/coordinator', [CoordinatorController::class, 'coordinator'])->name('coordinator');
     Route::get('/detail/{id}', [CoordinatorController::class, 'detail'])->name('detail');
     Route::put('/detail/{id}/status', [CoordinatorController::class, 'updateStatus'])->name('detail.updateStatus');
@@ -42,7 +42,7 @@ Route::middleware(['roles:coordinator'])->group(function () {
 
 });
 
-Route::middleware(['roles:inspector'])->group(function () {
+Route::middleware(['roles:inspector,admin'])->group(function () {
     // Halaman utama inspector
     Route::get('/inspector', [InspectorController::class, 'inspector'])->name('inspector');
     Route::get('/assessment/{id}', [InspectorController::class, 'assessment'])->name('assessment');
